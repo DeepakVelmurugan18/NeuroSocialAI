@@ -32,7 +32,7 @@ export default function FacebookDashboardPage() {
         const userStr = localStorage.getItem("user");
         const userId = userStr ? JSON.parse(userStr).id : "";
         const res = await axios.get(
-          `http://${window.location.hostname}:5000/api/stats${userId ? `?userId=${userId}` : ''}`
+          `https://neurosocialai.onrender.com/api/stats${userId ? `?userId=${userId}` : ''}`
         );
         setStats(res.data);
       } catch (error) {

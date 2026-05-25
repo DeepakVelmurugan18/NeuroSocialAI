@@ -61,7 +61,7 @@ export default function SignupPage() {
         const res =
           await axios.post(
 
-            `http://${window.location.hostname}:5000/api/register`,
+            `https://neurosocialai.onrender.com/api/register`,
 
             formData
 

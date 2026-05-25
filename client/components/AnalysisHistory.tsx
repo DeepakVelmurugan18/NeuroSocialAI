@@ -46,7 +46,7 @@ export default function AnalysisHistory() {
 
         const res =
           await axios.get(
-            `http://${window.location.hostname}:5000/api/analyses${userId ? `?userId=${userId}` : ''}`
+            `https://neurosocialai.onrender.com/api/analyses${userId ? `?userId=${userId}` : ''}`
           );
 
         setAnalyses(

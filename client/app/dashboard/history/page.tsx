@@ -20,7 +20,7 @@ export default function HistoryPage() {
       const userStr = localStorage.getItem("user");
       const userId = userStr ? JSON.parse(userStr).id : "";
       const res = await axios.get(
-        `http://${window.location.hostname}:5000/api/analyses${userId ? `?userId=${userId}` : ''}`
+        `https://neurosocialai.onrender.com/api/analyses${userId ? `?userId=${userId}` : ''}`
       );
       
       const history = res.data;

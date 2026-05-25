@@ -83,7 +83,7 @@ export default function CalendarPage() {
       try {
         const userStr = localStorage.getItem("user");
         const userId = userStr ? JSON.parse(userStr).id : "";
-        const res = await fetch(`http://localhost:5000/api/schedule${userId ? `?userId=${userId}` : ''}`);
+        const res = await fetch(`https://neurosocialai.onrender.com/api/schedule${userId ? `?userId=${userId}` : ''}`);
         if (res.ok) {
           const data = await res.json();
           setSchedule(data);
@@ -103,7 +103,7 @@ export default function CalendarPage() {
     try {
       const userStr = localStorage.getItem("user");
       const userId = userStr ? JSON.parse(userStr).id : "";
-      const res = await fetch(`http://localhost:5000/api/schedule/generate`, {
+      const res = await fetch(`https://neurosocialai.onrender.com/api/schedule/generate`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId })

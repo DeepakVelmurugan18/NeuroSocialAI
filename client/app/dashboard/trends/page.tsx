@@ -26,7 +26,7 @@ export default function TrendsPage() {
 
   const fetchTrends = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/trends");
+      const res = await fetch("https://neurosocialai.onrender.com/api/trends");
       if (res.ok) {
         const data = await res.json();
         setHashtags(data);

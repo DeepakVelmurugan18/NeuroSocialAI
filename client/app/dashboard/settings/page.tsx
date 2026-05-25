@@ -26,7 +26,7 @@ function SettingsContent() {
       try {
         const userStr = localStorage.getItem("user");
         const userId = userStr ? JSON.parse(userStr).id : "";
-        const res = await fetch(`http://localhost:5000/api/stats${userId ? `?userId=${userId}` : ''}`);
+        const res = await fetch(`https://neurosocialai.onrender.com/api/stats${userId ? `?userId=${userId}` : ''}`);
         if (res.ok) {
           const data = await res.json();
           setConnected((prev) => ({
@@ -82,7 +82,7 @@ function SettingsContent() {
       try {
         const userStr = localStorage.getItem("user");
         const userId = userStr ? JSON.parse(userStr).id : "";
-        await fetch(`http://localhost:5000/api/auth/disconnect/${platform}`, {
+        await fetch(`https://neurosocialai.onrender.com/api/auth/disconnect/${platform}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ userId })
@@ -102,7 +102,7 @@ function SettingsContent() {
     if (!connected[platform as keyof typeof connected]) {
       const userStr = localStorage.getItem("user");
       const userId = userStr ? JSON.parse(userStr).id : "";
-      window.location.href = `http://localhost:5000/api/auth/${platform}?userId=${userId}&t=${Date.now()}`;
+      window.location.href = `https://neurosocialai.onrender.com/api/auth/${platform}?userId=${userId}&t=${Date.now()}`;
     } else {
       toggleConnection(platform as keyof typeof connected);
     }

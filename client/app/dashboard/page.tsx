@@ -265,12 +265,12 @@ export default function DashboardPage() {
         
         // Step 1: Force a real-time sync with Google/Meta APIs
         await axios.get(
-          `http://${window.location.hostname}:5000/api/stats/sync${userId ? `?userId=${userId}` : ''}`
+          `https://neurosocialai.onrender.com/api/stats/sync${userId ? `?userId=${userId}` : ''}`
         );
 
         // Step 2: Fetch the newly updated stats from the database
         const res = await axios.get(
-          `http://${window.location.hostname}:5000/api/stats${userId ? `?userId=${userId}` : ''}`
+          `https://neurosocialai.onrender.com/api/stats${userId ? `?userId=${userId}` : ''}`
         );
         
         if (isMounted) setStats(res.data);

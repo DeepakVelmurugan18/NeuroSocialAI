@@ -46,7 +46,7 @@ export default function AIAnalyzer({ platform = "general" }: { platform?: string
 
         const res =
           await axios.post(
-            `http://${window.location.hostname}:5000/api/analyze`,
+            `https://neurosocialai.onrender.com/api/analyze`,
             {
               content,
               userId,

@@ -687,7 +687,7 @@ app.get("/api/auth/facebook", (req, res) => {
   // REAL Meta API Scopes required for Facebook Pages and Linked Instagram Accounts
   const scopes = "public_profile,pages_show_list,pages_read_engagement,instagram_basic,instagram_manage_insights";
   const FACEBOOK_CLIENT_ID = process.env.FACEBOOK_CLIENT_ID;
-  const url = `https://www.facebook.com/v18.0/dialog/oauth?client_id=${FACEBOOK_CLIENT_ID}&redirect_uri=http://localhost:5000/api/auth/facebook/callback&state=${userId ? userId.toString() : 'facebook'}&scope=${scopes}`;
+  const url = `https://www.facebook.com/v18.0/dialog/oauth?client_id=${FACEBOOK_CLIENT_ID}&redirect_uri=https://neurosocialai.onrender.com/api/auth/facebook/callback&state=${userId ? userId.toString() : 'facebook'}&scope=${scopes}`;
   res.redirect(url);
 });
 
@@ -699,7 +699,7 @@ app.get("/api/auth/facebook/callback", async (req, res) => {
     // 1. Exchange code for REAL Access Token
     const FACEBOOK_CLIENT_ID = process.env.FACEBOOK_CLIENT_ID;
     const FACEBOOK_CLIENT_SECRET = process.env.FACEBOOK_CLIENT_SECRET;
-    const tokenUrl = `https://graph.facebook.com/v18.0/oauth/access_token?client_id=${FACEBOOK_CLIENT_ID}&redirect_uri=http://localhost:5000/api/auth/facebook/callback&client_secret=${FACEBOOK_CLIENT_SECRET}&code=${code}`;
+    const tokenUrl = `https://graph.facebook.com/v18.0/oauth/access_token?client_id=${FACEBOOK_CLIENT_ID}&redirect_uri=https://neurosocialai.onrender.com/api/auth/facebook/callback&client_secret=${FACEBOOK_CLIENT_SECRET}&code=${code}`;
     const tokenResponse = await axios.get(tokenUrl);
     const accessToken = tokenResponse.data.access_token;
 
@@ -756,7 +756,7 @@ app.get("/api/auth/instagram", (req, res) => {
   const { userId } = req.query;
   const scopes = "public_profile,pages_show_list,pages_read_engagement,instagram_basic,instagram_manage_insights";
   const FACEBOOK_CLIENT_ID = process.env.FACEBOOK_CLIENT_ID; 
-  const url = `https://www.facebook.com/v18.0/dialog/oauth?client_id=${FACEBOOK_CLIENT_ID}&redirect_uri=http://localhost:5000/api/auth/instagram/callback&state=${userId ? userId.toString() : 'instagram'}&scope=${scopes}`;
+  const url = `https://www.facebook.com/v18.0/dialog/oauth?client_id=${FACEBOOK_CLIENT_ID}&redirect_uri=https://neurosocialai.onrender.com/api/auth/instagram/callback&state=${userId ? userId.toString() : 'instagram'}&scope=${scopes}`;
   res.redirect(url);
 });
 
@@ -767,7 +767,7 @@ app.get("/api/auth/instagram/callback", async (req, res) => {
   try {
     const FACEBOOK_CLIENT_ID = process.env.FACEBOOK_CLIENT_ID;
     const FACEBOOK_CLIENT_SECRET = process.env.FACEBOOK_CLIENT_SECRET;
-    const tokenUrl = `https://graph.facebook.com/v18.0/oauth/access_token?client_id=${FACEBOOK_CLIENT_ID}&redirect_uri=http://localhost:5000/api/auth/instagram/callback&client_secret=${FACEBOOK_CLIENT_SECRET}&code=${code}`;
+    const tokenUrl = `https://graph.facebook.com/v18.0/oauth/access_token?client_id=${FACEBOOK_CLIENT_ID}&redirect_uri=https://neurosocialai.onrender.com/api/auth/instagram/callback&client_secret=${FACEBOOK_CLIENT_SECRET}&code=${code}`;
     const tokenResponse = await axios.get(tokenUrl);
     const accessToken = tokenResponse.data.access_token;
 
@@ -826,7 +826,7 @@ app.get("/api/auth/instagram/callback", async (req, res) => {
 
 app.get("/api/auth/twitter", (req, res) => {
   // Simulating Twitter OAuth since X API v2 requires extensive developer portal setup
-  res.redirect("http://localhost:5000/api/auth/twitter/callback");
+  res.redirect("https://neurosocialai.onrender.com/api/auth/twitter/callback");
 });
 
 app.get("/api/auth/twitter/callback", async (req, res) => {
