@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+
+  // YouTube Stats
+  youtubeConnected Boolean @default(false)
+  youtubeSubs      String?
+  youtubeViews     String?
+  youtubeVideos    String?
+  youtubeAccessToken  String?
+  youtubeRefreshToken String?
+
+  // Meta Stats (Facebook/Instagram)
+  facebookConnected  Boolean @default(false)
+  instagramConnected Boolean @default(false)
+  instagramFollowers String?
+  instagramAccessToken String?
+  facebookFollowers  String?
+  facebookAccessToken String?
+
+  // Twitter Stats
+  twitterConnected Boolean @default(false)
+  twitterFollowers String?
+
+  analyses Analysis[]
+  scheduledPosts ScheduledPost[]
+}
+model Analysis {
+  id          String   @id @default(cuid())
+  content     String
+  viralScore  String
+  sentiment   String
+  engagement  String
+  createdAt   DateTime @default(now())
+
+  userId String
+  user   User @relation(fields: [userId], references: [id])
+}
+
+model ScheduledPost {
+  id        String   @id @default(cuid())
+  day       String   // "Mon", "Tue", etc.
+  platform  String   // "instagram", "youtube", "twitter"
+  time      String   // "10:30 AM"
+  type      String   // "Reel", "Thread", etc.
+  title     String
+  optimal   Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+}
