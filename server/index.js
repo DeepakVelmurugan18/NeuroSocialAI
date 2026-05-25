@@ -673,10 +673,10 @@ app.get("/api/auth/youtube/callback", async (req, res) => {
       });
     }
 
-    res.redirect("http://localhost:3000/dashboard/settings?youtube=connected");
+    res.redirect("https://neuro-social-ai.vercel.app/dashboard/settings?youtube=connected");
   } catch (error) {
     console.error("Error retrieving YouTube access token:", error);
-    res.redirect("http://localhost:3000/dashboard/settings?youtube=error");
+    res.redirect("https://neuro-social-ai.vercel.app/dashboard/settings?youtube=error");
   }
 });
 
@@ -693,7 +693,7 @@ app.get("/api/auth/facebook", (req, res) => {
 
 app.get("/api/auth/facebook/callback", async (req, res) => {
   const { code } = req.query;
-  if (!code) return res.redirect("http://localhost:3000/dashboard/settings?facebook=error");
+  if (!code) return res.redirect("https://neuro-social-ai.vercel.app/dashboard/settings?facebook=error");
 
   try {
     // 1. Exchange code for REAL Access Token
@@ -743,10 +743,10 @@ app.get("/api/auth/facebook/callback", async (req, res) => {
         }
       });
     }
-    res.redirect("http://localhost:3000/dashboard/settings?facebook=connected");
+    res.redirect("https://neuro-social-ai.vercel.app/dashboard/settings?facebook=connected");
   } catch (error) {
     console.error("Error retrieving REAL Facebook data:", error.response?.data || error.message);
-    res.redirect("http://localhost:3000/dashboard/settings?facebook=error");
+    res.redirect("https://neuro-social-ai.vercel.app/dashboard/settings?facebook=error");
   }
 });
 
@@ -762,7 +762,7 @@ app.get("/api/auth/instagram", (req, res) => {
 
 app.get("/api/auth/instagram/callback", async (req, res) => {
   const { code } = req.query;
-  if (!code) return res.redirect("http://localhost:3000/dashboard/settings?instagram=error");
+  if (!code) return res.redirect("https://neuro-social-ai.vercel.app/dashboard/settings?instagram=error");
 
   try {
     const FACEBOOK_CLIENT_ID = process.env.FACEBOOK_CLIENT_ID;
@@ -815,10 +815,10 @@ app.get("/api/auth/instagram/callback", async (req, res) => {
        console.log("No linked Instagram account found.");
     }
 
-    res.redirect("http://localhost:3000/dashboard/settings?instagram=connected");
+    res.redirect("https://neuro-social-ai.vercel.app/dashboard/settings?instagram=connected");
   } catch (error) {
     console.error("Error retrieving Instagram data:", error.response?.data || error.message);
-    res.redirect("http://localhost:3000/dashboard/settings?instagram=error");
+    res.redirect("https://neuro-social-ai.vercel.app/dashboard/settings?instagram=error");
   }
 });
 
@@ -841,10 +841,10 @@ app.get("/api/auth/twitter/callback", async (req, res) => {
         }
       });
     }
-    res.redirect("http://localhost:3000/dashboard/settings?twitter=connected");
+    res.redirect("https://neuro-social-ai.vercel.app/dashboard/settings?twitter=connected");
   } catch (error) {
     console.error("Error retrieving Twitter data:", error);
-    res.redirect("http://localhost:3000/dashboard/settings?twitter=error");
+    res.redirect("https://neuro-social-ai.vercel.app/dashboard/settings?twitter=error");
   }
 });
 
