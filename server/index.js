@@ -654,6 +654,11 @@ app.get("/api/auth/youtube/callback", async (req, res) => {
       mine: true,
     });
 
+    if (!response.data.items || response.data.items.length === 0) {
+      console.error("YouTube account has no channel created.");
+      return res.redirect("https://client-seven-woad-29.vercel.app/dashboard/settings?youtube=no_channel");
+    }
+
     const stats = response.data.items[0].statistics;
 
     // Save tokens and data to the database
