@@ -18,7 +18,7 @@ const replaceInFile = (filePath, replacements) => {
 
 const serverIndexPath = path.join(__dirname, 'server', 'index.js');
 const serverReplacements = [
-  { regex: /http:\/\/localhost:3000/g, replacement: 'https://neuro-social-ai.vercel.app' }
+  { regex: /http:\/\/localhost:3000/g, replacement: 'https://client-seven-woad-29.vercel.app' }
 ];
 
 replaceInFile(serverIndexPath, serverReplacements);
